@@ -21,7 +21,7 @@ spec:
       containers:
       - name: t11s-server
         
-        image: dbe81550-wise-chickadee.registry.twcstorage.ru/t11s-server:latest
+        image: registry.twcstorage.ru/t11s-server:latest
         command: ["/usr/local/bin/server", "--mode", "production", "--role", "monolith"]
 
         imagePullPolicy: Always 
