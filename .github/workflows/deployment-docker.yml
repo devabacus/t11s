@@ -75,22 +75,10 @@ jobs:
         run: |
           echo "Updating manifests with image tag: $IMAGE_TAG"
 
-          # --- НАЧАЛО ОТЛАДКИ ---
-          echo "--- Content of job.yaml BEFORE sed ---"
-          cat t11s_server/k8s/job.yaml
-          echo "--- End of job.yaml content ---"
-          # --- КОНЕЦ ОТЛАДКИ ---
-
           # Команда замены
           sed -i "s|^\(\s*image:\s*\).*$|\1${REGISTRY_DOMAIN}/t11s-server:${IMAGE_TAG}|" t11s_server/k8s/deployment.yaml
           sed -i "s|^\(\s*image:\s*\).*$|\1${REGISTRY_DOMAIN}/t11s-server:${IMAGE_TAG}|" t11s_server/k8s/job.yaml
           
-          # --- НАЧАЛО ОТЛАДКИ ---
-          echo "--- Content of job.yaml AFTER sed ---"
-          cat t11s_server/k8s/job.yaml
-          echo "--- End of job.yaml content ---"
-          # --- КОНЕЦ ОТЛАДКИ ---
-
           echo "Updated deployment image:"
           grep "image:" t11s_server/k8s/deployment.yaml
           echo "Updated job image:"
